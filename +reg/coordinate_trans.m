@@ -1,7 +1,7 @@
 %find the 2 transform matrix Tc1 and Tc2 for rigistration
 function [C,theta,d]=coordinate_trans(Q,Tr2)
 n=size(Q,1);
-robot=iiwa7;
+robot=model.iiwa7;
 Trm=robot.fkine(Q);
 % A=Tr2;
 % 
@@ -37,8 +37,16 @@ Rc=num2cell(rc,[1 2 4]);
 Rb=num2cell(rb,[1 2 4]);
 r_diff=cellfun(@(x,y)(x*inv(y)),Rc,Rb,'UniformOutput',false);
 R_diff=cell2mat(r_diff);
-axang=rotm2axang(R_diff);
-theta=axang(:,4);
+%axang=rotm2axang(R_diff);
+%theta=axang(:,4);
+for i=1:n
+    try
+        theta(i) = tr2angvec2(R_diff(:,:,i)); %get the rotation axis and angle
+        d1=0.2*theta(i);
+    catch
+       disp('error') 
+    end
+end
 
 d=cellfun(@(a,b) (norm(a-b)),num2cell(tc,2),num2cell(tb,2));
 end

@@ -26,10 +26,19 @@ Rc=num2cell(rc,[1 2 4]);
 Rb=num2cell(rb,[1 2 4]);
 r_diff=cellfun(@(x,y)(x*inv(y)),Rc,Rb,'UniformOutput',false);
 R_diff=cell2mat(r_diff);
-axang=rotm2axang(R_diff);
-theta=axang(:,4);
-d1=0.2*theta;
-
+%theta=tr2angvec2(R_diff);
+%theta=axang(:,4);
+%d1=0.2*theta;
+theta=zeros(n,1);
+d1=zeros(n,1);
+for i=1:n
+    try
+        theta(i) = tr2angvec2(R_diff(:,:,i)); %get the rotation axis and angle
+        d1(i)=0.2*theta(i);
+    catch
+       disp('error') 
+    end
+end
 d2=cellfun(@(a,b) (norm(a-b)),num2cell(tc,2),num2cell(tb,2));
 y=sum(d1.^2)+sum(d2.^2);
 % for j=1:n

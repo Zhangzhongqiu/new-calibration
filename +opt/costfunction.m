@@ -27,7 +27,7 @@ Tr_mdl=zeros(4,4,n);
 % R_mdl=zeros(3,3,n);
 % T_mdl=zeros(n,3);
 for i=1:n
-    r(i)=opt.iiwa7_mdl(a,tau(i,:));
+    r(i)=model.iiwa7_mdl(a,tau(i,:));
     Tr_mdl(:,:,i) = r(i).fkine(q(i,:));%get the transform matrix from the model
 %     Tr_mdl(:,:,i) = T2*Tr_mdl(:,:,i)*T1;
 %    R_mdl(:,:,i) = t2r(Tr_mdl(:,:,i));%convert transform matrix to rotation matrix
@@ -47,9 +47,19 @@ R_mdl=num2cell(R_mdl,[1 2 4]);
 R=num2cell(R,[1 2 4]);
 r_diff=cellfun(@(x,y)(x*inv(y)),R_mdl,R,'UniformOutput',false);
 R_diff=cell2mat(r_diff);
-axang=rotm2axang(R_diff);
-theta=axang(:,4);
-d1=0.2*theta;
+theta=zeros(n,1);
+d1=zeros(n,1);
+for i=1:n
+    try
+        theta(i) = tr2angvec2(R_diff(:,:,i)); %get the rotation axis and angle
+        d1(i)=0.2*theta(i);
+    catch
+       disp('error') 
+    end
+end
+% axang=rotm2axang(R_diff);
+% theta=axang(:,4);
+%d1=0.2*theta;
 d2=cellfun(@(a,b) (norm(a-b)),num2cell(T_mdl,2),num2cell(T,2));
 error=sum(d1.^2)+sum(d2.^2);
 end
