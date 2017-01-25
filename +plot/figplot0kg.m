@@ -1,7 +1,7 @@
-function [f1,f2]=figplot(d,theta)
+function [f1,f2]=figplot0kg(d,theta)
 d=1000*d;
-edges1=0:.05:2.7;
-ed1=0:.05:2.65;
+edges1=0:.08:3.76;
+ed1=0:.08:3.68;
 N(:,1)=histcounts(d(:,1),edges1);
 N(:,2)=histcounts(d(:,2),edges1);
 figure
@@ -25,8 +25,8 @@ ldg1.Box='off';
 %plot rotation error
 deg=pi/180;
 theta=theta/deg;
-edges2=(0:0.00018:0.009)/deg;
-ed2=(0:0.00018:0.00882)/deg;
+edges2=(0:0.000204:0.0102)/deg;
+ed2=(0:0.000204:0.00996)/deg;
 M(:,1)=histcounts(theta(:,1),edges2);
 M(:,2)=histcounts(theta(:,2),edges2);
 figure

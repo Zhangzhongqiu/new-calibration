@@ -1,7 +1,7 @@
-function [f1,f2]=figplot(d,theta)
+function [f1,f2]=figplot1250g(d,theta)
 d=1000*d;
-edges1=0:.05:2.7;
-ed1=0:.05:2.65;
+edges1=0:.084:4.2;
+ed1=0:.084:4.116;
 N(:,1)=histcounts(d(:,1),edges1);
 N(:,2)=histcounts(d(:,2),edges1);
 figure
