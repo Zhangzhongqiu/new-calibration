@@ -1,4 +1,4 @@
-function [theta,d]=error_est(x,tau,q,C)
+function [theta,d,T_error]=error_est(x,tau,q,C)
 
 n=size(q,1);  
 Tr_mdl=zeros(4,4,n);
@@ -28,6 +28,7 @@ for i=1:n
     end
 end
 d=cellfun(@(a,b) (norm(a-b)),num2cell(T_mdl,2),num2cell(T,2));
-
+T_error=T_mdl-T;
+T_error=abs(T_error);
 
 end

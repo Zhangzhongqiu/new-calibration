@@ -12,6 +12,6 @@ options.MaxFunEvals=100000;
 %[x,fval, exitflag, output]=fminunc(fun,x0,options);
 x=fminunc(fun,x0,options);
 
-n=size(config_opt,1);
+%n=size(config_opt,1);
 
 end

@@ -23,6 +23,8 @@ Tc2=[r2,t2';0 0 0 1];
 
 C=zeros(4,4,n);
 %calculate the error after rigistration
+%tanslation error(m)
+%rotation error(rad)
 for i=1:n
     
   C(:,:,i)=Tc2*Tr2(:,:,i)*Tc1; %A----camera, after registration, C----robot
@@ -42,7 +44,7 @@ R_diff=cell2mat(r_diff);
 for i=1:n
     try
         theta(i) = tr2angvec2(R_diff(:,:,i)); %get the rotation axis and angle
-        d1=0.2*theta(i);
+        %d1=0.2*theta(i);
     catch
        disp('error') 
     end
