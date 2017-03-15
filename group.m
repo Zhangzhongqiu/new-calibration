@@ -1,4 +1,5 @@
- data1=csvread('20170306_run_1.csv',1,1);
+%devide the measured data into 2 parts, opt group(1100*31) and test group(302*31) 
+data1=csvread('20170306_run_1.csv',1,1);
  data2=read.exclude0(data1);
 n=1402;
 m=302;
