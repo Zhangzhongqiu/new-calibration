@@ -1,5 +1,5 @@
 %find the 2 transform matrix Tc1 and Tc2 for rigistration
-function [C,theta,d]=coordinate_trans(Q,Tr2)
+function [C,Tc1,Tc2,theta,d]=coordinate_trans(Q,Tr2)
 n=size(Q,1);
 robot=model.iiwa7;
 Trm=robot.fkine(Q);

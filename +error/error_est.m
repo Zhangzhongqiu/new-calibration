@@ -11,8 +11,8 @@ end
 R_mdl=t2r(Tr_mdl);
 T_mdl=transl(Tr_mdl);
 
-R=t2r(C(:,:,1:n)); %get R, R is from C 
-T=transl(C(:,:,1:n));%get translation from C
+R=t2r(C); %get R, R is from C 
+T=transl(C);%get translation from C
 
 R_mdl=num2cell(R_mdl,[1 2 4]); 
 R=num2cell(R,[1 2 4]);
