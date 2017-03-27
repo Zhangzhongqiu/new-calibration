@@ -1,3 +1,4 @@
+
 function [Q,tau,Tr2]=gettrans(data)
 n=size(data,1);
 
