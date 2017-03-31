@@ -1,4 +1,4 @@
-function error = costfunction(a,tau,q,Tr)
+function error = costfunction_2(a,tau,q,Tr)
 %Tr should be the transformation matrix in camera frame after registration! 
 % a represents the parameters to be identified
 
@@ -10,19 +10,11 @@ T=transl(Tr(:,:,1:n));%get translation from Tr
 
 
 
-% d = 0; %initial error
-% d1 = 0; %inital angle error
-% d2 = 0; %initial translation error
-%error=0;
-% for j=1:n
-% r(j)=iiwa7_mdl(a,tau(j,:));
-% 
-% end
+
 Tr_mdl=zeros(4,4,n);
-% R_mdl=zeros(3,3,n);
-% T_mdl=zeros(n,3);
+
 for i=1:n
-    r(i)=model.iiwa7_mdl(a,tau(i,:));
+    r(i)=model.iiwa7_mdl_2(a,tau(i,:));
     Tr_mdl(:,:,i) = r(i).fkine(q(i,:));%get the transform matrix from the model
 %     Tr_mdl(:,:,i) = T2*Tr_mdl(:,:,i)*T1;
 %    R_mdl(:,:,i) = t2r(Tr_mdl(:,:,i));%convert transform matrix to rotation matrix

@@ -1,4 +1,4 @@
-function [d_bc,theta_bc]=error_est_bc(q,C)
+function [d_bc,theta_bc,T_error_bc]=error_est_bc(q,C)
 
 n=size(q,1);
 robot=model.iiwa7;
@@ -23,5 +23,5 @@ for i=1:n
 end
 
 d_bc=cellfun(@(a,b) (norm(a-b)),num2cell(tc,2),num2cell(tb,2));
-
+T_error_bc=abs(tb-tc);
 end

@@ -35,7 +35,7 @@ f2(1).FaceColor='b';
 f2(2).FaceColor='r';
 set(gca,'xlim',[0 0.01],'YGrid','on','XTick',ed2,'XTickLabelRotation',45);
 set(gca,'XTickLabel',sprintf('%3.2f\n',ed2*1000));
-xlabel('Rotation error [rad\times10^{-3}]');
+xlabel('Rotation error [\times10^{-3}rad]');
 ylabel('Number of measurements');
 box off;
 mean2=mean(theta);

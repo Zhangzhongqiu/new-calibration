@@ -1,4 +1,4 @@
-function [theta,d,T_error]=validation_test(data_test,x,tc1,tc2)
+function [theta,d,T_error_ac,T_error_bc]=validation_test(data_test,x,tc1,tc2)
 
 [q_test,tau_test,Tr_test]=read.gettrans(data_test);
 n=size(q_test,1);  
@@ -11,8 +11,8 @@ C=zeros(4,4,n);
  
  end
 
- [d_bc,theta_bc]=error.error_est_bc(q_test,C);
- [theta_ac,d_ac,T_error]=error.error_est(x,tau_test,q_test,C);
+ [d_bc,theta_bc,T_error_bc]=error.error_est_bc(q_test,C);
+ [theta_ac,d_ac,T_error_ac]=error.error_est(x,tau_test,q_test,C);
   theta=[theta_ac;theta_bc;]';
  d=[d_ac,d_bc];
 end
