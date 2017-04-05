@@ -4,7 +4,7 @@ load('data_test.mat');
 load('Tc1.mat');
 load('Tc2.mat');
 % %load the idenrified error parameters from opt group of different sizes
- load('outputs1402_1100.mat');
+ load('outputs1402_1100_2.mat');
 % [theta_100,d_100,T_error_100]=validation_test(data_test_302,x_100,Tc1,Tc2);
 % [theta_200,d_200,T_error_200]=validation_test(data_test_302,x_200,Tc1,Tc2);
 % [theta_300,d_300,T_error_300]=validation_test(data_test_302,x_300,Tc1,Tc2);

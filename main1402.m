@@ -1,13 +1,13 @@
  %1402 configs in all
- %load('data1402.mat'); %data1402%
-%load the 1100 configs specific for optimization ''data_opt''
+ load('data1402.mat'); %data1402%
+
 
  %start with registration to get Tc1 and Tc2
- %[q_opt,tau_opt,Tr_opt]=read.gettrans(data1402);
+ [q_opt,tau_opt,Tr_opt]=read.gettrans(data1402);
  %theta_bc:rotation error before optimization
  %d_bc:translation error before optimization
- %[C,Tc1,Tc2,theta_bc,d_bc]=reg.coordinate_trans(q_opt,Tr_opt);
- 
+ [C,Tc1,Tc2,theta_bc,d_bc]=reg.coordinate_trans(q_opt,Tr_opt);
+ %load the 1100 configs specific for optimization ''data_opt'';
  load('opt_1100.mat');%data_opt_100%
  load('Tc1.mat');
  load('Tc2.mat');

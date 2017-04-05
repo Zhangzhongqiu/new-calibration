@@ -1,7 +1,7 @@
 function x=opt21_2(q,tau,Tr)
-%[config_opt,config_test]=qget(q);
-
-fun = @(x) opt.costfunction_2(x,tau,q,Tr);
+[config_opt,config_test]=qget(q);
+fun = @(x) opt.costfunction_2(x,tau,config_opt,Tr);
+%fun = @(x) opt.costfunction_2(x,tau,q,Tr);
 x0=zeros(1,28);
 
 options=optimoptions('fminunc','Algorithm','quasi-newton');
