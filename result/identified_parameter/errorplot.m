@@ -1,0 +1,20 @@
+load('x.mat')
+load('/home/kelm/uegabe/Alle/Zhang/new-calibration/configuration/exp1/registration/Tc1.mat');
+load('/home/kelm/uegabe/Alle/Zhang/new-calibration/configuration/exp1/registration/Tc2.mat');
+load('/home/kelm/uegabe/Alle/Zhang/new-calibration/configuration/exp1/data_test/data_test.mat');
+
+[theta_100,d_100,T_error_100]=validation_test(data_test_302,x(1,:),Tc1,Tc2);
+[theta_200,d_200,T_error_200]=validation_test(data_test_302,x(2,:),Tc1,Tc2);
+[theta_300,d_300,T_error_300]=validation_test(data_test_302,x(3,:),Tc1,Tc2);
+[theta_400,d_400,T_error_400]=validation_test(data_test_302,x(4,:),Tc1,Tc2);
+[theta_500,d_500,T_error_500]=validation_test(data_test_302,x(5,:),Tc1,Tc2);
+[theta_600,d_600,T_error_600]=validation_test(data_test_302,x(6,:),Tc1,Tc2);
+[theta_700,d_700,T_error_700]=validation_test(data_test_302,x(7,:),Tc1,Tc2);
+[theta_800,d_800,T_error_800]=validation_test(data_test_302,x(8,:),Tc1,Tc2);
+[theta_900,d_900,T_error_900]=validation_test(data_test_302,x(9,:),Tc1,Tc2);
+[theta_1000,d_1000,T_error_1000]=validation_test(data_test_302,x(10,:),Tc1,Tc2);
+[theta_1100,d_1100,T_error_1100_ac,T_error_1100_bc]=validation_test(data_test_302,x(11,:),Tc1,Tc2);
+d=[d_100(:,1),d_200(:,1),d_300(:,1),d_400(:,1),d_500(:,1),d_600(:,1),...
+    d_700(:,1),d_800(:,1),d_900(:,1),d_1000(:,1),d_1100(:,1)];
+theta=[theta_100(:,1),theta_200(:,1),theta_300(:,1),theta_400(:,1),theta_500(:,1),theta_600(:,1),...
+    theta_700(:,1),theta_800(:,1),theta_900(:,1),theta_1000(:,1),theta_1100(:,1)];
