@@ -13,7 +13,8 @@ v(1,1:7)=mean(data(:,1:7));
 
 mean_v=mean(data);
 std_v=std(data);
-threshold=3*std_v;
+threshold=2*std_v;
+%threshold=3*std_v;
 Abs=abs(data-mean_v);
 
 %filter the torque

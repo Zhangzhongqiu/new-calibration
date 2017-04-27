@@ -1,6 +1,0 @@
-LBR4p.model3d='iiwa';
-LBR4p.plot3d(config(686,:),'workspace',);
-%zlim([-.98 2.0]);
-
-hold on
-mdl.plot

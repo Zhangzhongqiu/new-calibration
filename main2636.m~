@@ -1,8 +1,13 @@
 % load('data_2636.mat')
 %  [q_opt,tau_opt,Tr_opt]=read.gettrans(data_2636);
 %  [C,Tc1_2,Tc2_2,theta_bc,d_bc]=reg.coordinate_trans(q_opt,Tr_opt);
- load('opt2_1000.mat');%data_opt_100%
+ load('opt2_50_4.mat');%data_opt_100%
  load('Tc1_2.mat');
  load('Tc2_2.mat');
- [d_1000, theta_00, x_900, T_error_900]=opt.optimization(data_opt2_900, Tc1_2, Tc2_2);
- save('outputs2636_900.mat','x_900');
+ [d_75, theta_75, x_75, T_error_75]=opt.optimization(data_opt2_75, Tc1_2, Tc2_2);
+ save('outputs2636_75_1.mat','x_75');
+ clear d_75;
+ clear theta_75;
+ clear T_error_75;
+ load('data_test_2.mat');
+ [theta_75,d_75,T_error_75_ac,T_error_75_bc]=validation_test(data_test_2,x_75,Tc1_2,Tc2_2);
