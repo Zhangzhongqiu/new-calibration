@@ -1,7 +1,9 @@
-
-
+% q: the robot configs for optimization
+% tau: torque
+% Tr: transformation matrix
+% x0: initial value
+% 21 kinematic error parameters and 7 compliance error parameters
 function x=opt21(q,tau,Tr)
-%[config_opt,config_test]=qget(q);
 
 fun = @(x) opt.costfunction(x,tau,q,Tr);
 x0=zeros(1,28);

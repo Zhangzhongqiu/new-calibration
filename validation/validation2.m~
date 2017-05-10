@@ -1,5 +1,0 @@
-load('Tc1_2.mat');
-load('Tc2_2.mat');
-load('data_test_2.mat');
-%load('outputs2636_400.mat');
-[theta_900,d_00,T_error_900_ac,T_error_900_bc]=validation_test(data_test_2,x_900_2,Tc1_2,Tc2_2);

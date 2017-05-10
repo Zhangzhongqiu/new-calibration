@@ -1,5 +1,5 @@
-function lbr = iiwa7_mdl_2(x,tau)
-load('/home/kelm/uegabe/Alle/Zhang/new-calibration/result/identified_parameter/opt1/outputs1402_1100.mat');
+function lbr = iiwa7_mdl_2(x)
+%load('/home/kelm/uegabe/Alle/Zhang/new-calibration/result/identified_parameter/opt1/outputs1402_1100.mat');
 % Inertia
 I1 = [0.016340516507626,	0,	0;
       0,	0.016173135489225,	0.003534;
@@ -57,13 +57,13 @@ limits =  [-2.9671, 2.9671; ...
            -2.9671, 2.9671];
 
 % create links
-L(1) = Link('offset', 0+x_1100(1)+x_1100(22)*tau(1), 'd', d_bs+x_1100(8),  'alpha', -0.5*pi+x_1100(15), 'standard','I', I1, 'm', M(1), 'r', RC(1,:), 'Jm', 0); 
-L(2) = Link('offset', 0+x_1100(2)+x_1100(23)*tau(2), 'd', 0+x_1100(9),  'alpha', 0.5*pi+x_1100(16), 'standard','I', I2, 'm', M(2), 'r', RC(2,:), 'Jm', 0);
-L(3) = Link('offset', pi+x_1100(3)+x_1100(24)*tau(3), 'd', d_se+x_1100(10),  'alpha', -0.5*pi+x_1100(17), 'standard','I', I3, 'm', M(3), 'r', RC(3,:), 'Jm', 0);
-L(4) = Link('offset', 0+x(1)+x(2)*tau(4), 'd', 0+x(3),  'alpha', 0.5*pi+x(4), 'standard','I', I4, 'm', M(4), 'r', RC(4,:), 'Jm', 0);
-L(5) = Link('offset', pi+x(5)+x(6)*tau(5), 'd', d_ew+x(7),  'alpha', -0.5*pi+x(8), 'standard','I', I5, 'm', M(5), 'r', RC(5,:), 'Jm', 0);
-L(6) = Link('offset', 0+x(9)+x(10)*tau(6), 'd', 0+x(11),  'alpha', 0.5*pi+x(12), 'standard','I', I6, 'm', M(6), 'r', RC(6,:), 'Jm', 0);
-L(7) = Link('offset', 0+x(13)+x(14)*tau(7), 'd', d_wt+x(15),  'alpha',0+x(16), 'standard','I', I7, 'm', M(7), 'r', RC(7,:), 'Jm', 0);
+L(1) = Link('offset', 0+x(1), 'd', d_bs+x(8),  'alpha', -0.5*pi+x(15), 'standard','I', I1, 'm', M(1), 'r', RC(1,:), 'Jm', 0); 
+L(2) = Link('offset', 0+x(2), 'd', 0+x(9),  'alpha', 0.5*pi+x(16), 'standard','I', I2, 'm', M(2), 'r', RC(2,:), 'Jm', 0);
+L(3) = Link('offset', pi+x(3), 'd', d_se+x(10),  'alpha', -0.5*pi+x(17), 'standard','I', I3, 'm', M(3), 'r', RC(3,:), 'Jm', 0);
+L(4) = Link('offset', 0+x(4), 'd', 0+x(11),  'alpha', 0.5*pi+x(18), 'standard','I', I4, 'm', M(4), 'r', RC(4,:), 'Jm', 0);
+L(5) = Link('offset', pi+x(5), 'd', d_ew+x(12),  'alpha', -0.5*pi+x(19), 'standard','I', I5, 'm', M(5), 'r', RC(5,:), 'Jm', 0);
+L(6) = Link('offset', 0+x(6), 'd', 0+x(13),  'alpha', 0.5*pi+x(20), 'standard','I', I6, 'm', M(6), 'r', RC(6,:), 'Jm', 0);
+L(7) = Link('offset', 0+x(7), 'd', d_wt+x(14),  'alpha',0+x(21), 'standard','I', I7, 'm', M(7), 'r', RC(7,:), 'Jm', 0);
 
 
 lbr = SerialLink(L, 'name', 'iiwa', 'qlim', limits);

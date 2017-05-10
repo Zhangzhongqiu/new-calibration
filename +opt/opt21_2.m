@@ -1,8 +1,13 @@
-function x=opt21_2(q,tau,Tr)
-[config_opt,config_test]=qget(q);
-fun = @(x) opt.costfunction_2(x,tau,config_opt,Tr);
-%fun = @(x) opt.costfunction_2(x,tau,q,Tr);
-x0=zeros(1,28);
+% q: the robot configs for optimization
+% tau: torque
+% Tr: transformation matrix before calibration
+% x0: initial value
+%only 21 kinematic error parameters
+function x=opt21_2(q,Tr)
+
+fun = @(x) opt.costfunction_2(x,q,Tr);
+
+x0=zeros(1,21);
 
 options=optimoptions('fminunc','Algorithm','quasi-newton');
 options.Display='iter';

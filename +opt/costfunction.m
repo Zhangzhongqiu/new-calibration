@@ -9,32 +9,12 @@ R=t2r(Tr(:,:,1:n)); %get R, R is from Tr
 T=transl(Tr(:,:,1:n));%get translation from Tr
 
 
-
-% d = 0; %initial error
-% d1 = 0; %inital angle error
-% d2 = 0; %initial translation error
-%error=0;
-% for j=1:n
-% r(j)=iiwa7_mdl(a,tau(j,:));
-% 
-% end
 Tr_mdl=zeros(4,4,n);
-% R_mdl=zeros(3,3,n);
-% T_mdl=zeros(n,3);
+
 for i=1:n
     r(i)=model.iiwa7_mdl(a,tau(i,:));
     Tr_mdl(:,:,i) = r(i).fkine(q(i,:));%get the transform matrix from the model
-%     Tr_mdl(:,:,i) = T2*Tr_mdl(:,:,i)*T1;
-%    R_mdl(:,:,i) = t2r(Tr_mdl(:,:,i));%convert transform matrix to rotation matrix
-%     R_diff(:,:,i) = R_mdl(:,:,i)*inv(R(:,:,i));%get the rotation matrix of 2 frames
-%     axang(i,:) = rotm2axang(R_diff(:,:,i)); %get the rotation axis and angle
-%     d1=0.2*axang(i,4);
-%     
-%    T_mdl(i,:) = transl(Tr_mdl(:,:,i));%convert transform matrix to translation vector
-%     T(:,i) = transl(Tr(:,:,i)); %convert transform matrix to translation vector
-%     d2=norm(T_mdl(:,i)-T(:,i));
-%     d=d1^2+d2^2;
-%     error=error+d;
+
 end
 R_mdl=t2r(Tr_mdl);
 T_mdl=transl(Tr_mdl);

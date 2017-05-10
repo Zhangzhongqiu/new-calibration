@@ -16,14 +16,11 @@ T=transl(Tr(:,:,1:n));%get translation from Tr
 
 Tr_mdl=zeros(4,4,n);
 
-% for i=1:n
-%     r(i)=model.iiwa7_mdl_2(a);%in 'iiwa7_mdl_2' only 21 kinematic error parameters are defined 
-%     Tr_mdl(:,:,i) = r(i).fkine(q(i,:));%get the transform matrix from the model
-% 
-% end
-r=model.iiwa7_mdl_2(a);
-Tr_mdl=r.fkine(q);
+for i=1:n
+    r(i)=model.iiwa7_mdl_2(a);%in 'iiwa7_mdl_2' only 21 kinematic error parameters are defined 
+    Tr_mdl(:,:,i) = r(i).fkine(q(i,:));%get the transform matrix from the model
 
+end
 R_mdl=t2r(Tr_mdl);
 T_mdl=transl(Tr_mdl);
 R_mdl=num2cell(R_mdl,[1 2 4]);
